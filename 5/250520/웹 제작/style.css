@@ -1,0 +1,35 @@
+body {
+  background-color: black;
+}
+
+.o {
+  position: absolute;
+  left: 1000px;
+  bottom: 750px;
+  background-color: blue;
+  border: 1px solid gray;
+  border-radius: 100px;
+  width: 70px;
+  height: 70px;
+}
+
+#t {
+  position: absolute;
+  left: 1000px;
+  bottom: 500px;
+  background-color: yellow;
+  border: 1px solid white;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+}
+
+#sc_bar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  width: 250px;
+  height: 100px;
+  border-radius: 15px;
+}
