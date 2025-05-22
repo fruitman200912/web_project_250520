@@ -6,26 +6,36 @@ function ch(id) {
 }
 
 let start = false
+let tId
+let oId
+
+function moveT() {
+  ch("t")
+  tId = setInterval(() => {
+    ch("t")
+    document.getElementById("t").onclick = function () {
+      clearInterval(tId)
+      moveT()
+    }
+  }, 500);
+}
+
+function moveO(oid) {
+  ch(oid)
+  oId = setInterval(() => {
+    ch(oid)
+    document.getElementsByClassName("o").onclick = function (event) {
+      clearInterval(oId)
+      moveT(`${event.target.id}`)
+    }
+  }, 2000);
+}
 
 document.getElementById("sc_bar").onclick = function () {
-  start = true
-
-  setInterval(() => {
-    ch("1")
-  }, 1000);
-  setInterval(() => {
-    ch("2")
-  }, 1000);
-  setInterval(() => {
-    ch("3")
-  }, 1000);
-  setInterval(() => {
-    ch("4")
-  }, 1000);
-  setInterval(() => {
-    ch("5")
-  }, 1000);
-  setInterval(() => {
-    ch("t")
-  }, 500);
+  moveT()
+  moveO('1')
+  moveO('2')
+  moveO('3')
+  moveO('4')
+  moveO('5')
 }
