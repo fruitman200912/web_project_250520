@@ -7,7 +7,7 @@ function ch(id) {
 
 let start = false
 let tId
-let oId
+let oId = []
 
 function moveT() {
   ch("t")
@@ -22,20 +22,22 @@ function moveT() {
 
 function moveO(oid) {
   ch(oid)
-  oId = setInterval(() => {
+  oId[Number(oid)] = setInterval(() => {
     ch(oid)
-    document.getElementsByClassName("o").onclick = function (event) {
-      clearInterval(oId)
-      moveT(`${event.target.id}`)
-    }
+    document.querySelectorAll(".o").forEach(el => {
+      el.addEventListener("click", function () {
+        clearInterval(oId[Number(this.id)])
+        moveO(this.id)
+      })
+    })
   }, 2000);
 }
 
 document.getElementById("sc_bar").onclick = function () {
   moveT()
+  moveO('0')
   moveO('1')
   moveO('2')
   moveO('3')
   moveO('4')
-  moveO('5')
 }
